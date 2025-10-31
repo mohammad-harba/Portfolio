@@ -64,22 +64,25 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 15, 0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* blend the navbar with the page background */
+    background: rgba(10, 10, 15, 0.08);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 15, 0.95);
-    box-shadow: 0 10px 40px rgba(0, 240, 255, 0.1);
+    /* slightly more visible when scrolling */
+    background: rgba(10, 10, 15, 0.16);
+    box-shadow: 0 6px 20px rgba(0, 240, 255, 0.06);
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 1.5rem 2rem;
+    /* reduce vertical padding to make navbar shorter */
+    padding: 0.8rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,7 +119,7 @@ body::before {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .nav-item {

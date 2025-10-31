@@ -259,12 +259,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // Apply throttling to scroll events
   const throttledNavbarScroll = throttle(function () {
     const navbar = document.querySelector(".navbar");
+    // Use the CSS .scrolled class to control appearance so we don't override styles with inline values
     if (window.scrollY > 100) {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.98)";
-      navbar.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
+      navbar.classList.add("scrolled");
     } else {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
-      navbar.style.boxShadow = "none";
+      navbar.classList.remove("scrolled");
     }
   }, 16);
 
