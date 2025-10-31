@@ -48,14 +48,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let current = "";
 
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
+    // Check if we're at the bottom of the page
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
 
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute("id");
-      }
-    });
+    if (scrollPosition >= pageHeight - 10) {
+      // If at bottom, activate the last section
+      const lastSection = sections[sections.length - 1];
+      current = lastSection.getAttribute("id");
+    } else {
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+    }
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
