@@ -105,7 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }, observerOptions);
 
   // Observe all sections and cards for animation
-  const animateElements = document.querySelectorAll(".skill-card, .project-card, .education-card, .contact-item");
+  const animateElements = document.querySelectorAll(
+    ".skill-card, .project-card, .education-card, .contact-item, .about-card"
+  );
   animateElements.forEach((el) => {
     observer.observe(el);
   });
@@ -113,13 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add CSS for fade-in animation
   const style = document.createElement("style");
   style.textContent = `
-        .skill-card, .project-card, .education-card, .contact-item {
+        .skill-card, .project-card, .education-card, .contact-item, .about-card {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
-        .skill-card.animate-in, .project-card.animate-in, .education-card.animate-in, .contact-item.animate-in {
+        .skill-card.animate-in, .project-card.animate-in, .education-card.animate-in, .contact-item.animate-in, .about-card.animate-in {
             opacity: 1;
             transform: translateY(0);
         }
@@ -285,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add parallax effect to cards
-  const cards = document.querySelectorAll(".skill-card, .project-card, .contact-card, .contact-item");
+  const cards = document.querySelectorAll(".skill-card, .project-card, .contact-card, .contact-item, .about-card");
   cards.forEach((card) => {
     card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
