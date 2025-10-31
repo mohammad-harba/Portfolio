@@ -172,10 +172,10 @@ body::before {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
-    padding: 8rem 2rem 4rem;
+    padding: 6rem 2rem 3rem;
     position: relative;
     overflow: hidden;
 }
@@ -210,7 +210,7 @@ body::before {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 6rem;
+    gap: 4rem;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -395,6 +395,95 @@ body::before {
     background-clip: text;
     position: relative;
     z-index: 1;
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Floating Badges */
+.hero-image {
+    position: relative;
+}
+
+.floating-badge {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--neon-blue);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-badge i {
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.badge-1 {
+    top: 10%;
+    right: -10%;
+    animation-delay: 0s;
+}
+
+.badge-2 {
+    bottom: 25%;
+    right: -15%;
+    animation-delay: 1s;
+}
+
+.badge-3 {
+    top: 50%;
+    left: -15%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
 }
 
 /* Sections */
@@ -1060,35 +1149,70 @@ footer p,
 @media (max-width: 968px) {
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3rem;
         text-align: center;
     }
 
     .hero-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-stats {
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .floating-badge {
+        width: 60px;
+        height: 60px;
         font-size: 1.5rem;
     }
 
-    .hero-buttons {
-        justify-content: center;
+    .badge-1 {
+        top: 5%;
+        right: 5%;
     }
 
-    .profile-placeholder {
-        width: 350px;
-        height: 350px;
-        margin: 0 auto;
+    .badge-2 {
+        bottom: 5%;
+        right: 5%;
     }
 
-    .profile-placeholder i {
-        font-size: 10rem;
+    .badge-3 {
+        top: 50%;
+        left: 5%;
     }
+}
 
-    .section-title {
-        font-size: 2.5rem;
-    }
+.hero-buttons {
+    justify-content: center;
+}
+
+.profile-placeholder {
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.profile-placeholder i {
+    font-size: 10rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+}
 }
 
 @media (max-width: 768px) {
@@ -1140,7 +1264,20 @@ footer p,
     }
 
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .floating-badge {
+        display: none;
     }
 
     .profile-placeholder {
@@ -1193,7 +1330,26 @@ footer p,
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+
+    .hero-stats {
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+
+    .stat-item {
+        flex: 1;
+        min-width: 80px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
     }
 
     .btn {
