@@ -792,7 +792,8 @@ body::before {
     padding: 1.5rem;
     position: relative;
     z-index: 2;
-    overflow-y: auto;
+    /* Remove per-card scrolling so cards remain uniform height. Use text clamping below to keep descriptions concise */
+    overflow: visible;
     flex: 1;
 }
 
@@ -827,6 +828,26 @@ body::before {
     margin-bottom: 1rem;
     line-height: 1.6;
     font-size: 0.95rem;
+}
+
+/* Clamp project description text so cards don't create internal scrollbars
+   - desktop: ~6 lines, mobile: ~4 lines */
+.project-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 6;
+    /* default for larger screens */
+    line-clamp: 6;
+}
+
+@media (max-width: 768px) {
+    .project-content p {
+        -webkit-line-clamp: 4;
+        /* tighter on small screens */
+        line-clamp: 4;
+    }
 }
 
 .project-tech,
