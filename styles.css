@@ -441,7 +441,7 @@ body::before {
 .terminal-line {
     margin-bottom: 12px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     opacity: 0;
     animation: fadeInLine 0.5s ease-out forwards;
@@ -482,12 +482,18 @@ body::before {
 .command {
     color: var(--neon-purple);
     font-weight: 600;
+    overflow-wrap: break-word;
+    flex: 1;
 }
 
 .output {
     color: #27c93f;
     padding-left: 20px;
-    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    flex: 1;
+    font-size: 0.75rem;
+    line-height: 1.4;
 }
 
 .cursor {
