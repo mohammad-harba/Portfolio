@@ -356,58 +356,185 @@ body::before {
     }
 }
 
-.profile-placeholder {
-    width: 350px;
-    height: 350px;
-    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(183, 77, 255, 0.1));
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
+/* Code Terminal Animation */
+.code-terminal {
+    width: 450px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 2px solid rgba(0, 240, 255, 0.3);
-    box-shadow:
-        0 0 60px rgba(0, 240, 255, 0.3),
-        inset 0 0 60px rgba(183, 77, 255, 0.2);
-    animation: levitate 6s ease-in-out infinite;
+    animation: terminalFloat 6s ease-in-out infinite;
 }
 
-@keyframes levitate {
+@keyframes terminalFloat {
     0%, 100% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-30px) rotate(5deg);
+        transform: translateY(-20px);
     }
 }
 
-.profile-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    background: conic-gradient(from 0deg, var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-blue));
+.terminal-window {
+    width: 100%;
+    background: rgba(10, 10, 20, 0.95);
+    border-radius: 12px;
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    box-shadow:
+        0 20px 60px rgba(0, 240, 255, 0.4),
+        inset 0 0 30px rgba(0, 240, 255, 0.05);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.terminal-header {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(183, 77, 255, 0.1));
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-buttons span {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    filter: blur(30px);
-    opacity: 0.5;
-    animation: spinGlow 8s linear infinite;
 }
 
-@keyframes spinGlow {
-    100% {
-        transform: rotate(360deg);
+.btn-close {
+    background: #ff5f56;
+    box-shadow: 0 0 10px rgba(255, 95, 86, 0.5);
+}
+
+.btn-minimize {
+    background: #ffbd2e;
+    box-shadow: 0 0 10px rgba(255, 189, 46, 0.5);
+}
+
+.btn-maximize {
+    background: #27c93f;
+    box-shadow: 0 0 10px rgba(39, 201, 63, 0.5);
+}
+
+.terminal-title {
+    font-size: 0.9rem;
+    color: var(--neon-blue);
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+}
+
+.terminal-body {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.terminal-line {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeInLine 0.5s ease-out forwards;
+}
+
+.terminal-line:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.terminal-line:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.terminal-line:nth-child(3) {
+    animation-delay: 2.5s;
+}
+
+.terminal-line:nth-child(4) {
+    animation-delay: 3.5s;
+}
+
+.terminal-line:nth-child(5) {
+    animation-delay: 4.5s;
+}
+
+@keyframes fadeInLine {
+    to {
+        opacity: 1;
     }
 }
 
-.profile-placeholder i {
-    font-size: 13rem;
-    background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    position: relative;
-    z-index: 1;
+.prompt {
+    color: var(--neon-blue);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.command {
+    color: var(--neon-purple);
+    font-weight: 600;
+}
+
+.output {
+    color: #27c93f;
+    padding-left: 20px;
+    font-size: 0.85rem;
+}
+
+.cursor {
+    color: var(--neon-blue);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.typing {
+    overflow: hidden;
+    border-right: 2px solid var(--neon-blue);
+    white-space: nowrap;
+    animation: typing 2s steps(15) 4.5s forwards;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Hero Stats */
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 1;
+    }
 }
 
 /* Hero Stats */
